@@ -1,0 +1,14 @@
+﻿# 忽略 *.class 文件
+*.class
+
+# 忽略 target 目录下的内容
+target/
+
+# 忽略 eclipse 系统配置项文件
+.classpath
+.project
+.settings/
+
+# 忽略 idea 系统配置项文件
+*.iml
+.idea/
