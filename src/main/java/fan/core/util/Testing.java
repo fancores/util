@@ -2,6 +2,7 @@ package fan.core.util;
 
 import java.awt.Desktop;
 import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.Collection;
 import java.util.Iterator;
@@ -21,8 +22,9 @@ public class Testing {
 	}
 
 	/**
-	 * <p> 输出对象 。支持 Collection, Map, Iterator, Pojo, 数组</p>
+	 * <p><b><em> 输出对象 。支持 Collection, Map, Iterator, Pojo, 数组 </b></em></p>
 	 * <pre>
+	 * >>> <b><em>e.g.</em></b>
 	 * >>> Testing.printObject(Map);
 	 * >>> Testing.printObject(Set);
 	 * >>> Testing.printObject(List);
@@ -62,7 +64,7 @@ public class Testing {
 		}
 	}
 	
-	/** <p> 判定对象内容是否为空 </p> */
+	/** <p><b><em> 判定对象内容是否为空 </b></em></p> */
 	private static boolean objectIsEmpty(int size){
 		if(size == 0){
 			System.out.println("--- >>> The object argument is empty <<< ---");
@@ -72,8 +74,9 @@ public class Testing {
 	}
 	
 	/**
-	 * <p> 使用操作系统工具打开文件 </p>
+	 * <p><b><em> 使用操作系统工具打开文件 </b></em></p>
 	 * <pre>
+	 * >>> <b><em>e.g.</em></b>
 	 * >>> Testing.openFile(new File("src/test/java/fan/core/util/test/image.jpg"));
 	 * </pre>
 	 */
@@ -81,11 +84,11 @@ public class Testing {
 		if(file == null){
 			System.err.println("[ERROR] File must not be null");
 		}else {
+			System.out.println("Opening " + file.getAbsolutePath() + ", please wait.");
 			try {
-				System.out.println("Opening " + file.getAbsolutePath() + ", please wait.");
 				Desktop.getDesktop().open(file);
-			} catch (Exception e) {
-				e.printStackTrace();
+			} catch (IOException e) {
+				throw new ExecutetimeException(e);
 			}
 		}
 	}

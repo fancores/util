@@ -386,8 +386,6 @@ public class Container {
 		private KeyType keyType;
 		/** <p><b><em> 是否是升序排序 </b></em></p> */
 		private boolean isAsc;
-		/** <p><b><em> 错误代号 </b></em></p> */
-		private static final int ERROR_CODE = -2;
 		
 		/** <p><b><em> 记录关键字, 反射获取关键字类型, 确定排序方式 </b></em></p> */
 		public SimpleComparator(Class<?> entityClass, String key, SortKey sortKey){
@@ -414,7 +412,7 @@ public class Container {
 			} catch (Throwable e) {
 				e.printStackTrace();
 			}
-			return ERROR_CODE;
+			throw new UnsupportedException(key + " is not supported.");
 		}
 
 		/** <p><b><em> 比较两个数值类型关键字的大小 </b></em></p> */
@@ -522,7 +520,7 @@ public class Container {
 			private static final long serialVersionUID = 1L;
 
 			public UnsupportedException(String message){
-				super(message);
+				System.err.println(message);
 			}
 		}
 		
